@@ -1,0 +1,158 @@
+.menu-book-chapter {
+
+  ion-content {
+    position: relative;
+  }
+
+  ion-list-header {
+    margin: 0;
+    height: 2.2rem;
+  }
+
+  ion-label {
+    margin: 0 !important;
+  }
+
+  ion-item {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .book-header {
+    margin-left: 1.5rem;
+  }
+
+  .book-first-name {
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .book-second-name {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    color: #757575;
+  }
+
+  .selected-book,
+  .selected-chapter {
+    color: #f4f4f4;
+    .item-inner {
+      border-bottom: none;
+    }
+  }
+  .selected-book {
+    background-color: map_get($colors, royal);
+    .book-first-name {
+      font-weight: 600;
+    }
+    .book-second-name {
+      color: rgb(206, 206, 206);
+    }
+  }
+  .selected-chapter {
+    background-color: map_get($colors, royal) !important;
+  }
+
+  .c-highlight-icon,
+  .bookmarked {
+    font-size: 1.1rem;
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  .c-highlight-icon {
+    top: 2.3rem;
+    color: map_get($colors, highlighted);
+  }
+  .b-highlight-icon {
+    font-size: 1.5rem;
+    color: map_get($colors, highlighted);
+    padding-top: .5rem;
+  }
+
+  .left-side,
+  .right-side {
+    position: absolute !important;
+    top:0 !important;;
+    bottom:0 !important;;
+  }
+  .left-side {
+    left: 0 !important;
+    border-right: solid 1px rgba(174, 174, 174, 0.49);
+  }
+  .right-side {
+    right: 0 !important;
+
+    .item-inner {
+      padding-right: 0 !important;
+    }
+
+  }
+
+  .item-number {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+    width: 1.5rem;
+  }
+
+  .ipa {
+    color: #929292;
+  }
+
+  .icon-natural-tts {
+    color: #929292;
+    font-size: 2rem;
+  }
+
+  .icon-word-detail {
+    padding-left: .5rem;
+    color: rgba(101, 159, 208, 0.4);
+  }
+
+  .second-item {
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+
+  .btn-tts {
+    opacity: .4;
+    ion-icon {
+      color: #ffffff;
+    }
+
+    &.active {
+      opacity: .9;
+    }
+  }
+
+  .btn-tts-textarea {
+    text-align: right;
+
+    .item-inner {
+      border: none;
+    }
+
+    ion-label {
+      margin: 0;
+
+      button {
+        height: 3rem;
+        width: 3rem;
+
+        &:first-child {
+          float: left;
+          width: 3rem;
+        }
+      }
+    }
+  }
+}
+
+.homepage-header {
+  button {
+    width: 3.4rem;
+  }
+}

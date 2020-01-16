@@ -1,0 +1,67 @@
+.chapter-detail {
+
+  .fixed-content {
+    margin-bottom: 3rem;
+  }
+  .scroll-content {
+    padding-bottom: 3rem;
+  }
+
+  ion-item {
+    background-color: inherit;
+    color: inherit;
+    font-weight: 400;
+    letter-spacing: .04rem;
+    transition: background-color .2s;
+  }
+
+  .chapter-detail-list {
+    margin-bottom: 0;
+  }
+
+  .item-number {
+    width: 1.5rem;
+    margin-top: 1.5rem;
+    align-self: flex-start;
+  }
+
+  .first-verse {
+    .story {
+      color: rgba(245, 61, 61, 0.7);
+      font-weight: 400;
+      padding-bottom: 5px;
+    }
+
+  }
+  .second-verse {
+    color: rgba(65, 97, 189, 0.73);
+    font-size: 1.35rem;
+    padding-top: .5rem;
+
+    .second-story {
+      color: rgba(65, 97, 189, 0.9);
+      font-weight: 500;
+    }
+  }
+
+  .copying,
+  .highlighted {
+    border-top: dotted 1px map_get($colors, blacklight);
+    border-bottom: dotted 1px map_get($colors, blacklight);
+  }
+  .highlighted {
+    background-color: map_get($colors, highlightedOpa) !important;
+
+    +.highlighted {
+      border-top: none;
+    }
+  }
+
+  .copying {
+    background-color: rgba(228, 255, 183, 0.5) !important;
+
+    +.copying {
+      border-top: none;
+    }
+  }
+}

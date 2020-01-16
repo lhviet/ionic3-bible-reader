@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar
+      #searchbar
+      class="my-search-bar"
+      (ionInput)="onSearchInput($event)"
+      (ionClear)="onSearchClear($event)"
+    ></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #skinContent class="modal-search-all">
+
+  <ion-item text-wrap [hidden]="searchbar.value">
+    Type something to begin search in your primary Bible...
+  </ion-item>
+
+  <ion-fab right top [hidden]="!searchbar.value">
+    <button ion-fab mini class="s-btn">
+      {{sConfigs.count}}/{{sConfigs.total}} results
+    </button>
+  </ion-fab>
+
+  <ion-list *ngFor="let book of bookArr" no-lines>
+    <ion-list-header class="header">
+      {{book.name}}
+    </ion-list-header>
+    <div *ngFor="let chapter of book.chapters" (click)="onclick_goChapterDetail(book, chapter.number)">
+      <ion-list-header class="bHeader">{{book.name + ' ' + chapter.number}}</ion-list-header>
+      <ion-item text-wrap *ngFor="let item of chapter.verses">
+        <ion-note item-left class="item-number">{{item.verse}}</ion-note>
+        <ion-label [innerHTML]="item.text"></ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list-header
+    text-center (click)="onSearchMore(searchbar.value)"
+    [hidden]="sConfigs.count%100 > 0 || sConfigs.count == sConfigs.total">
+    Load more <ion-icon name="ios-arrow-dropdown"></ion-icon>
+  </ion-list-header>
+
+</ion-content>

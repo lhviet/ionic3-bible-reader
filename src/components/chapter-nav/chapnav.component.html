@@ -1,0 +1,40 @@
+<ion-item class="chapnav">
+  <ion-label color="lightdark">
+    <div class="book-old-new">
+      {{theBible.isBookOld(theBible.selectedBook) ? 'Old Testament' : 'New Testament'}}
+    </div>
+    <div class="book-second-name"
+         [hidden]="!bSetting.isDual
+          || !this.theBible.bookIndex[this.theBible.selectedBook].nameSecond">
+      {{theBible.bookIndex[theBible.selectedBook].nameSecond + ' ' + chapterNumber}}
+    </div>
+  </ion-label>
+  <ion-note item-right class="c-highlight-icon" [hidden]="!hasHighlights">
+    <ion-icon name="bookmark"></ion-icon>
+  </ion-note>
+  <ion-icon
+    item-right
+    name="arrow-dropleft-circle"
+    color="favorite"
+    [hidden]="chapterNumber > 1 || theBible.getOrderIndex(theBible.selectedBook) == 0"
+    (click)="onclick_prevChapter()"
+  ></ion-icon>
+  <ion-icon
+    item-right
+    name="ios-arrow-dropleft"
+    [hidden]="chapterNumber == 1"
+    (click)="onclick_prevChapter()"></ion-icon>
+  <ion-icon
+    item-right
+    name="ios-arrow-dropright"
+    [hidden]="chapterNumber == chaptersCount"
+    (click)="onclick_nextChapter()"></ion-icon>
+  <ion-icon
+    item-right
+    name="arrow-dropright-circle"
+    color="favorite"
+    [hidden]="chapterNumber < chaptersCount
+         || theBible.getOrderIndex(theBible.selectedBook) == (theBible.old.length + theBible.new.length - 1)"
+    (click)="onclick_nextChapter()"
+  ></ion-icon>
+</ion-item>

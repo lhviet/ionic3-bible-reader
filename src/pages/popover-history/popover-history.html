@@ -1,0 +1,10 @@
+<ion-content class="popover-history">
+
+  <ion-list-header>
+    History
+    <button ion-button outline item-right (click)="onclick_history($event)">Full</button>
+  </ion-list-header>
+
+  <history-list [limit]="25" (itemClick)="click_restoreHistory($event)"></history-list>
+
+</ion-content>

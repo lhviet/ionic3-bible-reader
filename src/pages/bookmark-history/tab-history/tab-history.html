@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar color="blacklight" class="my-navbar">
+    <ion-title>
+      History
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #skinContent padding class="tab-history">
+
+  <ion-item>
+    <button ion-button color="danger" item-left icon-right (click)="onclick_clearAll($event)">
+      Clear All
+      <ion-icon name="nuclear"></ion-icon>
+    </button>
+  </ion-item>
+
+  <history-list #history (itemClick)="click_restoreHistory($event)"></history-list>
+
+</ion-content>

@@ -1,0 +1,24 @@
+.bibles-page {
+  .bible-code {
+    font-size: 1.3rem;
+  }
+  .bible-label {
+    font-weight: 500;
+  }
+  .bible-description {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #686868;
+  }
+  .downloaded-list {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: rgba(183, 205, 238, 0.09);
+
+    ion-list-header,
+    ion-item{
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+}

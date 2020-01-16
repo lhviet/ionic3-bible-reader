@@ -1,0 +1,31 @@
+<ion-content class="popover-bible">
+  <ion-item no-padding class="custom-font-size">
+    <ion-label>
+      <ion-row>
+        <ion-col no-padding>
+          <button ion-button clear full (click)="onclick_fontDecrease()" class="text-button text-smaller" [disabled]="fontsize < 30">
+            <ion-label>A -</ion-label>
+          </button>
+        </ion-col>
+        <ion-col no-padding>
+          <button ion-button clear full (click)="onclick_fontIncrease()" class="text-button text-larger" [disabled]="fontsize > 300">
+            <ion-label>A +</ion-label>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-label>
+    <ion-note item-right text-center>{{ fontsize }}</ion-note>
+  </ion-item>
+
+
+  <ion-item
+    text-wrap
+    (click)="onclick_gotoDownloadBiblePage()"
+    [hidden]="bibleDownloaded && bibleDownloaded.length > 0">
+    <ion-label color="primary">
+      You have not downloaded any Bible. Please click here to go to Bible Download page.
+    </ion-label>
+  </ion-item>
+
+  <bible-management-component [hasDelete]="false"></bible-management-component>
+</ion-content>

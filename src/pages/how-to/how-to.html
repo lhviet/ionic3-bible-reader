@@ -1,0 +1,18 @@
+<ion-header>
+  <navBar
+    #navBar
+    title="How To"
+  ></navBar>
+</ion-header>
+
+<ion-content padding class="how-to-page">
+
+  <ion-item text-wrap>
+    <div class='header'>How to use this Bible Reader in the best way</div>
+    <div [innerHTML]="tips"></div>
+    <a href='{{ link }}' [hidden]="!link" target="_blank">
+      {{ link }}
+    </a>
+  </ion-item>
+
+</ion-content>

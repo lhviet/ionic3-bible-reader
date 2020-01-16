@@ -1,0 +1,84 @@
+<ion-grid
+  #skinContent
+  no-padding
+  class="menu-book-chapter"
+  [hidden]="theBible.old.length==0 && theBible.new.length==0"
+>
+  <ion-row>
+    <ion-col col-10 class="left-side">
+      <ion-content #bookContent>
+        <ion-list-header>
+          <div class="book-header">Old Testament - {{theBible.old.length}} books</div>
+          <ion-icon
+            item-right
+            name="{{isOldHidden ? 'ios-add-circle-outline' : 'ios-remove-circle-outline'}}"
+            (click)="isOldHidden = !isOldHidden">
+          </ion-icon>
+        </ion-list-header>
+        <ion-list [hidden]="isOldHidden">
+          <ion-item
+            *ngFor="let book of theBible.old | filter: {name: searchText, nameSecond: searchText} : bSetting.isDual; let i = index;"
+            [id]="'book_' + book.number"
+            [ngClass]="book.number === theBible.selectedBook ? 'selected-book' : ''"
+            (click)="selectBook(book)">
+            <ion-note item-left text-center class="item-number">
+              <ion-icon name="heart" color="bookmarked" [hidden]="!book.hasBookmark"></ion-icon>
+              <div>{{i + 1}}</div>
+            </ion-note>
+            <ion-label>
+              <div class="book-first-name">{{book.name}}</div>
+              <div [hidden]="!bSetting.isDual || !book.nameSecond" class="book-second-name">{{book.nameSecond}}</div>
+            </ion-label>
+            <ion-icon item-right name="bookmark" class="b-highlight-icon" [hidden]="!book.hasHighlight"></ion-icon>
+            <ion-badge item-right color="{{book.number === theBible.selectedBook ? 'light' : 'lightdark'}}">
+              {{book.chapters.length}}
+            </ion-badge>
+          </ion-item>
+        </ion-list>
+
+        <ion-list-header [id]="'hItem'">
+          <div class="book-header">New Testament - {{theBible.new.length}} books</div>
+          <ion-icon
+            item-right
+            name="{{isNewHidden ? 'ios-add-circle-outline' : 'ios-remove-circle-outline'}}"
+            (click)="isNewHidden = !isNewHidden">
+          </ion-icon>
+        </ion-list-header>
+        <ion-list [hidden]="isNewHidden">
+          <ion-item
+            *ngFor="let book of theBible.new | filter: {name: searchText, nameSecond: searchText} : bSetting.isDual; let i = index;"
+            [id]="'book_' + book.number"
+            [ngClass]="book.number === theBible.selectedBook ? 'selected-book' : ''"
+            (click)="selectBook(book)">
+            <ion-note item-left text-center class="item-number">
+              <ion-icon name="heart" color="bookmarked" [hidden]="!book.hasBookmark"></ion-icon>
+              <div>{{i + 1}}</div>
+            </ion-note>
+            <ion-label>
+              <div class="book-first-name">{{book.name}}</div>
+              <div [hidden]="!bSetting.isDual || !book.nameSecond" class="book-second-name">{{book.nameSecond}}</div>
+            </ion-label>
+            <ion-icon item-right name="bookmark" class="b-highlight-icon" [hidden]="!book.hasHighlight"></ion-icon>
+            <ion-badge item-right color="{{book.number === theBible.selectedBook ? 'light' : 'lightdark'}}">
+              {{book.chapters.length}}
+            </ion-badge>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-col>
+    <ion-col col-2 class="right-side">
+      <ion-content #chapterContent>
+        <ion-item
+          no-padding text-center menuClose="right"
+          *ngFor="let chapter of chapters"
+          [id]="'chapter_' + chapter.number"
+          [ngClass]="theBible.selectedChapter && chapter.number === theBible.selectedChapter.number ? 'selected-chapter' : ''"
+          (click)="selectChapter(chapter.number)">
+          {{chapter.number}}
+          <ion-icon name="bookmark" class="c-highlight-icon" [hidden]="!chapter.hasHighlight"></ion-icon>
+          <ion-icon name="heart" color="bookmarked" class="bookmarked" [hidden]="!chapter.isBookmarked"></ion-icon>
+        </ion-item>
+      </ion-content>
+    </ion-col>
+  </ion-row>
+</ion-grid>

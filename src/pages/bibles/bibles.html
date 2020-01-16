@@ -1,0 +1,47 @@
+<ion-header>
+  <navBar
+    #navBar
+    title="Download Bibles"
+  ></navBar>
+</ion-header>
+
+<ion-content no-padding class="bibles-page">
+
+  <bible-management-component></bible-management-component>
+
+  <div *ngFor="let langCode of bibleLangArr">
+    <ion-item (click)="toggleBibleGroup(langCode)">
+      <ion-label color="{{isGroupOpened(langCode) ? 'primary' : 'blacklight'}}">
+        {{languages[langCode][0] + ' - ' + languages[langCode][1]}}
+      </ion-label>
+      <ion-icon
+        item-right
+        [hidden]="!isGroupOpened(langCode)"
+        name="ios-remove-circle-outline"
+        color="primary"></ion-icon>
+      <ion-icon
+        item-right
+        [hidden]="isGroupOpened(langCode)"
+        name="ios-add-circle-outline"
+        color="lightdark"></ion-icon>
+    </ion-item>
+    <ion-list class="zebra-list" [hidden]="!isGroupOpened(langCode)">
+      <ion-item text-wrap *ngFor="let bible of bibles[langCode]; let i = index;">
+        <ion-note item-left class="item-number">{{i + 1}}</ion-note>
+        <ion-label>
+          <div class="bible-code">{{bible.code}}</div>
+          <div class="bible-label">{{bible.label}}</div>
+          <div class="bible-description">{{bible.description}}</div>
+        </ion-label>
+        <ion-icon item-right
+                  name="{{bibleDownloaded.indexOf(bible.code) < 0 ? 'md-cloud-download' : 'md-bulb'}}"
+                  color="{{bibleDownloaded.indexOf(bible.code) < 0 ? '' : 'lightdark'}}"
+                  [hidden]="downloadingBibles.indexOf(bible.code) > -1"
+                  (click)="downloadBible(bible.code)"></ion-icon>
+        <ion-spinner item-right name="ios"
+                     [hidden]="downloadingBibles.indexOf(bible.code) < 0"></ion-spinner>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

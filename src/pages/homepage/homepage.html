@@ -1,0 +1,47 @@
+<ion-header>
+  <navBar
+    #navBar
+    [hasPopBible]="true"
+    [hasPopHistory]="true"
+    [hasReturn]="false"
+    [hasSearch]="true"
+    (onSearch)="onSearch($event)"
+  ></navBar>
+</ion-header>
+
+<ion-content #skinContent class="homepage" >
+  <ion-list padding [hidden]="bSetting.pBible && bSetting.pBible.length > 0">
+    <ion-item text-wrap (click)="onclick_gotoDownloadBiblePage()">
+      <ion-label>There is no Bible copied to your device. Please <strong>TAP HERE</strong> to download bibles to your device.</ion-label>
+      <button ion-button color="danger" item-right>
+        <ion-icon name="md-cloud-download"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-note>You may see this text if your Internet Connection is not working correctly. Please:
+        <ul>
+          <li>keep waiting (longer than usual)</li>
+          <li>or make sure that you can connect to the internet</li>
+          <li>or simply disable the wifi on your mobile phone to continue...</li>
+        </ul>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <menuBookChapterComponent #menuBookChapter [searchText]="searchText"></menuBookChapterComponent>
+
+  <ion-fab class="custom-bottom-fab">
+    <button ion-fab mini class="o-btn" (click)="onclick_openModalSearchAll()">
+      <ion-icon color="lightdark" name="ios-search-outline"></ion-icon>
+    </button>
+    <button ion-fab mini class="o-btn" (click)="onclick_popoverBible($event)">
+      <ion-icon color="lightdark" name="md-paper"></ion-icon>
+    </button>
+    <button ion-fab mini class="o-btn"
+      [hidden]="!bSetting.pBible || !bSetting.sBible"
+      (click)="onclick_swapBible()">
+      <ion-icon name="swap" color="{{bSetting.isDual ? 'secondary' : 'lightdark'}}"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

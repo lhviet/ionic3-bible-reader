@@ -1,0 +1,49 @@
+<ion-header>
+  <navBar
+    #navBar
+    title="About"
+  ></navBar>
+</ion-header>
+
+<ion-content #skinContent class="about">
+
+  <ion-list>
+
+    <ion-list-header style="font-weight:900">
+      {{ appName }}
+    </ion-list-header>
+    <ion-item>
+      <span padding-right>Version</span>
+      <button ion-button outline small (click)="openModalNotification()">{{ version }}</button>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Rating</div>
+      {{ rate_app_text }}
+      <ion-icon name="arrow-dropright-circle" color="danger" (click)="rating()" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div text-justify [innerHTML]="about_note"></div>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Copyright</div>
+      {{ copyright }}
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Home</div>
+      {{ homepage }}
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Contact</div>
+      <a href="mailto:{{ contact }}?Subject={{ appName }}" target="_top">
+        {{ contact }}
+      </a>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

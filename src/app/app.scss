@@ -1,0 +1,154 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.zebra-list {
+
+  ion-item {
+    &:nth-child(odd) {
+      background-color: white;
+    }
+    &:nth-child(even) {
+      background-color: #faf9f9;
+    }
+    &:first-child {
+      border-top: 1px solid #dedede;
+    }
+    &:last-child {
+      border-bottom: 1px solid #dedede;
+    }
+
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+}
+
+.item-number {
+  font-size: 1.2rem;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.pb-0 {
+  padding-bottom: 0 !important;
+}
+
+// custom fab buttons
+.fab[mini] {
+  margin: 5px;
+  width: 3rem;
+  height: 2rem;
+  line-height: 2rem;
+
+  ion-icon {
+    font-size: 2rem;
+  }
+}
+.custom-bottom-fab {
+  bottom: -3rem;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background: map_get($colors, xlightdark);
+
+  button {
+    display: inline-block;
+  }
+}
+.o-btn {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+// square fab button
+.s-btn {
+  box-shadow: none;
+  border-radius: 2px;
+  width: auto !important;
+  display: inline-block;
+  right: 5px;
+}
+
+// custom search-bar
+
+.my-navbar {
+
+  min-height: 42px !important;
+
+  .toolbar-title {
+    font-size: 1.6rem !important;
+  }
+
+  .title-search-btn {
+    font-size: 1.4rem;
+    color: rgba(240, 240, 240, 0.8);
+  }
+}
+
+.my-search-bar {
+
+  padding: 0 2px;
+
+  .searchbar-input {
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+    padding-left: 35px;
+    padding-right: 5px;
+  }
+
+  .searchbar-search-icon {
+    top: 1rem;
+    left: 9px;
+  }
+}
+
+// custom back button
+.bar-button,
+.back-button {
+  margin: 0;
+  padding: 0;
+  min-width: 30px;
+}
+
+// custom background color
+._yB06 {
+  font-style: normal;
+  background: rgba(255, 226, 84, 0.66);
+}
+
+// popover
+.popover-viewport {
+  transition-delay: 10ms !important;
+}
+.popover-content {
+  width: 80% !important;
+}
+
+// custom right side menu
+.right-menu {
+  z-index: 99 !important;
+}
+ion-backdrop {
+  opacity: 0.3 !important;
+  display: block !important;
+}

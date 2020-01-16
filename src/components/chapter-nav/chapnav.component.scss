@@ -1,0 +1,27 @@
+.chapnav {
+
+  ion-label {
+    margin: 0;
+  }
+
+  ion-icon {
+    font-size: 3rem;
+  }
+
+  .book-old-new {
+    font-size: 1.4rem;
+    margin-left: 2rem;
+    margin-bottom: .2rem;
+  }
+  .book-second-name {
+    margin-left: 2rem;
+    font-size: 1.6rem;
+    color: map_get($colors, blacklight);
+  }
+
+  .c-highlight-icon {
+    ion-icon {
+      font-size: 1.7rem !important;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ appName }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #skinContent class="modal-app-begin">
+
+  <ion-list>
+
+    <ion-list-header>Release Note</ion-list-header>
+
+    <ion-item>
+      Version {{ version }}
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Rating</div>
+      {{ rate_app_text }}
+      <ion-icon name="arrow-dropright-circle" color="danger" (click)="rating()" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Changes Log</div>
+      <div text-justify [innerHTML]="feature_new"></div>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <div class='header'>Basic Feature</div>
+      <div text-justify [innerHTML]="feature_basic"></div>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

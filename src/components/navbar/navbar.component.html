@@ -1,0 +1,51 @@
+<ion-navbar color="blacklight" class="my-navbar">
+
+  <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+
+  <ion-title
+    color="light"
+    [hidden]="hasSearch"
+    (click)="onclick_searchInTitle()"
+    (ionBlur)="onSearchBlur($event)"
+  >
+    <ion-icon
+      [hidden]="!hasSearchTitle"
+      name="ios-search-outline"
+      item-left
+      class="title-search-btn"
+    ></ion-icon>
+    {{title}}
+  </ion-title>
+
+  <ion-searchbar
+    #searchbar
+    class="my-search-bar"
+    [hidden]="!hasSearch"
+    (ionInput)="onSearchInput($event)"
+    (ionClear)="onSearchClear($event)"
+    (ionFocus)="onSearchFocus($event)"
+    (ionBlur)="onSearchBlur($event)"
+  ></ion-searchbar>
+
+  <ion-buttons end [hidden]="isSearchActive">
+    <button
+      [hidden]="!hasPopHistory"
+      ion-button (click)="onclick_popoverHistory($event)">
+      <ion-icon name="ios-timer-outline"></ion-icon>
+    </button>
+    <button
+      [hidden]="!hasRightMenu"
+      ion-button (click)="toggleRightMenu($event)">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button
+      [hidden]="!hasReturn"
+      ion-button
+      (click)="returnHome($event)">
+      <ion-icon name="ios-home"></ion-icon>
+    </button>
+  </ion-buttons>
+
+</ion-navbar>

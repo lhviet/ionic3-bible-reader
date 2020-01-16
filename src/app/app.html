@@ -1,0 +1,20 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ appName }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content #skinContent>
+    <ion-list>
+      <ion-item *ngFor="let p of pages" (click)="openPage(p)" menuClose>
+        <ion-icon name="{{ p.icon }}" color="{{ p.color || '' }}" item-left></ion-icon>
+        {{p.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

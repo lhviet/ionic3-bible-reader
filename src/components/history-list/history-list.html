@@ -1,0 +1,10 @@
+<ion-list class="zebra-list">
+  <ion-item *ngFor="let item of items.slice(0, limit); let i = index;" (click)="onclick_restoreHistory(item)">
+    <ion-note item-left text-center class="item-number">
+      <ion-icon name="heart" color="bookmarked" [hidden]="!item.isBookmarked"></ion-icon>
+      <div>{{i + 1}}</div>
+    </ion-note>
+    <ion-label>{{ item.bookName || item.book }}</ion-label>
+    <span item-right>{{item.chapter}}</span>
+  </ion-item>
+</ion-list>

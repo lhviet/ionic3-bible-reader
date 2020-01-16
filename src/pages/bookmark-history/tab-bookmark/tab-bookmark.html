@@ -1,0 +1,34 @@
+
+<ion-header>
+  <ion-navbar color="blacklight" class="my-navbar">
+    <ion-title>
+      Bookmark
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #skinContent padding class="tab-bookmark">
+
+  <ion-item>
+    <button ion-button color="danger" item-left icon-right (click)="onclick_clearAll($event)">
+      Clear All
+      <ion-icon name="nuclear"></ion-icon>
+    </button>
+    <button ion-button color="danger" outline item-right (click)="onclick_toggleDelete($event)">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i = index;">
+      <ion-note item-left text-center class="item-number">
+        <div [hidden]="!isHideDeleteBtn">{{ i + 1 }}</div>
+        <ion-icon color="danger" name="remove-circle" [hidden]="isHideDeleteBtn" (click)="onclick_delete(item)"></ion-icon>
+      </ion-note>
+      <ion-label (click)="onclick_read(item)">{{ item.bookName || item.book }}</ion-label>
+      <span item-right (click)="onclick_read(item)">{{item.chapter}}</span>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

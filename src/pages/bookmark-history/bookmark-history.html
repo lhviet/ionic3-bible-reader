@@ -1,0 +1,11 @@
+<ion-header>
+  <navBar
+    #navBar
+    title="History & Bookmark"
+  ></navBar>
+</ion-header>
+
+<ion-tabs #historyBookmarkTabs>
+  <ion-tab tabIcon="ios-timer-outline" [root]="tab_history"></ion-tab>
+  <ion-tab tabIcon="heart" [root]="tab_bookmark"></ion-tab>
+</ion-tabs>

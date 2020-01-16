@@ -1,0 +1,78 @@
+<ion-header>
+  <navBar
+    #navBar
+    [title]="book.name + ' ' + chapter.number + ' : ' + chapter.verses.length + 'v'"
+    [hasSearchTitle]="true"
+    [hasPopBible]="true"
+    [hasPopHistory]="true"
+    [hasReturn]="false"
+    [hasRightMenu]="true"
+    (onToggleRightMenu)="toggleRightMenu($event)"
+    (onChangeBookChapter)="onChangeBookChapter($event)"
+    (onSearch)="onSearch($event)"
+  ></navBar>
+</ion-header>
+
+<ion-content
+  #chapterContent
+  class="chapter-detail"
+>
+
+  <chapnav
+    [chapterNumber]="chapter.number"
+    [chaptersCount]="book.chapters.length"
+    [hasHighlights]="chapter.hasHighlight"
+    (onChangeBookChapter)="onChangeBookChapter()"
+  ></chapnav>
+
+  <ion-list no-padding class="zebra-list chapter-detail-list">
+    <ion-item text-wrap *ngFor="let item of chapter.verses;"
+              (click)="onclick_verse(item)"
+              [class.highlighted]="item.isHighlighted && !isCopyMode"
+              [class.copying]="isCopyMode && copyVerses.indexOf(item) > -1"
+    >
+      <ion-note item-left class="item-number">{{item.verse}}</ion-note>
+      <ion-label>
+        <div class="first-verse">
+          <div [hidden]="!item.story" class="story" [innerHTML]="item.story"></div>
+          <div [innerHTML]="item.highlightText || item.text"></div>
+        </div>
+        <div [hidden]="!bSetting.isDual" class="second-verse">
+          <div [hidden]="!item.storySecond" class="second-story" [innerHTML]="item.storySecond"></div>
+          <div [innerHTML]="item.highlightTextSecond || item.textSecond"></div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <chapnav
+    [chapterNumber]="chapter.number"
+    [chaptersCount]="book.chapters.length"
+    (onChangeBookChapter)="onChangeBookChapter()"
+  ></chapnav>
+
+  <ion-fab class="custom-bottom-fab">
+    <button ion-fab mini class="o-btn" (click)="onclick_toggleCopy()">
+      <ion-icon [hidden]="isCopyMode" color="lightdark" name="copy"></ion-icon>
+      <ion-icon [hidden]="!isCopyMode" color="danger" name="ios-checkmark-circle"></ion-icon>
+    </button>
+    <button ion-fab mini class="o-btn" (click)="onclick_toggleBookmark()">
+      <ion-icon color="{{chapter.isBookmarked ? 'bookmarked' : 'lightdark'}}" name="heart"></ion-icon>
+    </button>
+    <button ion-fab mini class="o-btn" (click)="onclick_popoverBible($event)">
+      <ion-icon color="lightdark" name="md-paper"></ion-icon>
+    </button>
+    <button ion-fab mini class="o-btn"
+            [hidden]="!bSetting.pBible || !bSetting.sBible"
+            (click)="onclick_swapBible()">
+      <ion-icon name="swap" color="{{bSetting.isDual ? 'secondary' : 'lightdark'}}"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-menu side="right" [content]="menuContent" class="right-menu">
+  <menuBookChapterComponent #menuBookChapter
+                            (onChangeBookChapter)="onChangeBookChapter($event)"></menuBookChapterComponent>
+</ion-menu>
+<ion-nav #menuContent swipeBackEnabled="false"></ion-nav>

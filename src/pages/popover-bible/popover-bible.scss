@@ -1,0 +1,39 @@
+.popover-bible {
+
+  ion-list-header {
+    border-bottom: 0.55px solid #c8c7cc;
+    margin-bottom: 0;
+  }
+
+  .custom-font-size {
+
+    ion-label {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    ion-note {
+      width: 4rem;
+    }
+
+    border-bottom: 0.55px solid #c8c7cc;
+
+    .col {
+      border-right: solid 1px #c8c7cc !important;
+    }
+
+    .text-button {
+      height: 4rem;
+      margin: 0;
+    }
+
+    .text-smaller {
+      font-size: 1.4rem;
+    }
+
+    .text-larger {
+      font-size: 1.8rem;
+    }
+
+  }
+}

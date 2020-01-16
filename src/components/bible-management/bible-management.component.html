@@ -1,0 +1,29 @@
+<ion-list class="bible-management-component" [class.bgBlue]="hasDelete" [hidden]="!bibleDownloaded || bibleDownloaded.length===0">
+
+  <ion-list-header class="mb-0 pb-0">
+    My Bibles
+    <button item-right ion-button small outline [hidden]="hasDelete" (click)="onclick_gotoDownloadBiblePage()">
+      <ion-icon name="md-cloud-download"></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <ion-item text-wrap *ngFor="let bible of bibleObjDownloaded; let i = index;">
+    <ion-note item-left class="item-number">{{i + 1}}</ion-note>
+    <ion-label>
+      <div class="bible-code">{{bible.code}}</div>
+      <div class="bible-label">{{bible.label}}</div>
+      <div class="bible-description" [hidden]="!hasDelete">{{bible.description}}</div>
+      <button ion-button small [hidden]="bSetting.pBible!=bible.code">Primary</button>
+      <button ion-button small outline color="lightdark" [hidden]="bSetting.pBible==bible.code" (click)="setBiblePrimary(bible.code)">Primary</button>
+      <button ion-button small [hidden]="bSetting.sBible!=bible.code" color="blacklight">Secondary</button>
+      <button ion-button small outline color="lightdark" [hidden]="bSetting.sBible==bible.code" (click)="setBibleSecondary(bible.code)">Secondary</button>
+    </ion-label>
+    <ion-icon item-right
+              name="md-trash"
+              color="danger"
+              [hidden]="!hasDelete || deletingBibles.indexOf(bible.code) > -1"
+              (click)="deleteBible(bible)"></ion-icon>
+    <ion-spinner item-right name="ios" color="danger"
+                 [hidden]="deletingBibles.indexOf(bible.code) < 0"></ion-spinner>
+  </ion-item>
+</ion-list>
